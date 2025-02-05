@@ -1,1 +1,880 @@
-test
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Скупка бриллиантов в Москве дорого! Заложить бриллиант или продать бриллиант дорого в компании "Брюлик"</title>
+	<meta name="viewport" content="height=device-height,width=device-width,initial-scale=1,user-scalable=no,maximum-scale=1">
+	<meta name="keywords" content="ломбард крупных бриллиантов на цветном,ломбард бриллиантов, ломбард, ломбард Москва, скупка бриллиантов, продажа бриллиантов, залог бриллиантов, калькулятор цены бриллиантов, купить бриллианты">
+	<meta name="description" content="Брюлик - ломбард крупных бриллиантов на Цветном 26. Выкуп бриллиантов и ювелирных изделий. Быстрая оценка, оптимальная цена!">
+	<link href="logo.png" rel="shortcut icon" type="image/x-icon">
+	<link rel="apple-touch-icon" href="logo.png">
+	<script src="js/jquery.js"></script>
+
+	<link rel="stylesheet" href="js/lightbox.min.css">
+	<script src="js/lightbox.min.js"></script>
+
+	<script type="application/ld+json">
+{
+"@context" : "http://schema.org",
+  "@type" : "Organization",
+  "legalName" : "Брюлик",
+  "name": "ломбард крупных бриллиантов на цветном 26",
+   "description": "Ломбард крупных бриллиантов на цветном 26. ПОКУПКА. ПРОДАЖА. ЗАЛОГ.",
+  "url" : "http://brylik.ru/",
+  "contactPoint" : [{
+    "@type" : "ContactPoint",
+    "telephone" : "+7-980-333-00-00",
+    "contactType" : "customer service"
+  }]
+}
+</script>
+
+	<style>
+		body{
+			margin: 0;
+			/*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+			background-color: #F3F3F3;
+			font: 300 15px/17px 'Open Sans', 'sans-serif', Arial, Helvetica, sans-serif;
+		}
+		.Main_area{
+			text-align: center;
+		}
+		.Title {
+			font-size: 15px;
+			color: rgba(0, 0, 0, 0.65);
+			margin-top: 30px;
+			margin-bottom: 2px;
+			text-transform: uppercase;
+			font-weight: bold;
+		}
+		.Title_main{
+			margin-top: 60px;
+			/*margin-bottom: 15px;*/
+			font-size: 26px;
+			color: #242424;
+			padding-bottom: 30px;
+			/*border-bottom: 1px solid #ccc;*/
+			line-height: 34px;
+			overflow: hidden;
+		}
+		.Title_price {
+			font-size: 18px;
+			color: #636c72;
+			margin-top: 15px;
+		}
+		.Area{
+
+		}
+		.Area .el{
+			display: inline-block;
+			border-radius: 4px;
+			margin: 5px 3px;
+			padding: 5px 10px;
+			cursor: pointer;
+			color: #444;
+			background-color: rgba(114, 114, 114, 0.07);
+			transition: all 200ms linear;
+		}
+/*
+		.Area .el:hover{
+			background-color: rgba(255, 152, 0, 0.45);
+		}*/
+		.Area .el.ACT{
+			background-color: #6e6e6e;
+			color: #fff;
+
+		}
+
+		.Input_basic {
+			border-radius: 4px;
+			border: 1px solid #c0c0c0;
+			/* border: transparent; */
+			font-size: 16px;
+			padding: 9px 8px;
+			width: 100%;
+			color: #555555;
+			background-color: #e9e9e9;
+			/*background-color: transparent;*/
+			box-sizing: border-box;
+			/* box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 0 rgba(255, 255, 255, 0.9), 0 0 0 4px rgba(200, 200, 200, 0.1); */
+			margin: 5px 0;
+			-webkit-appearance: none;
+		}
+		.Total{
+			color: #778693;
+			font-size: 20px;
+			margin-bottom: 20px;
+		}
+		.PRICE{
+			font-size: 42px;
+			color: #282828;
+			margin-top: 14px;
+			font-weight: bold;
+		}
+		.PRICE::after{
+			content: " $";
+			color: rgba(0, 0, 0, 0.32);
+			font-size: 20px;
+		}
+		.PRICE1{
+			font-size: 24px;
+			color: #d6c49e;
+		}
+		.PRICE1::after{
+			content: " %";
+			color: #667380;
+			font-size: 16px;
+		}
+		.ERROR{
+			color: #ca5951;
+		}
+		.Price_el{
+			display: inline-block;
+			margin: 0 12px;
+			vertical-align: top;
+		}
+
+		@keyframes blink {
+			0% {  opacity: 1.0;  }
+			50% {  opacity: 0.0; }
+			100% {  opacity: 1.0; }
+		}
+		@-webkit-keyframes blink {
+			0% {  opacity: 1.0;  }
+			50% {  opacity: 0.0;  }
+			100% {  opacity: 1.0;  }
+		}
+
+
+		.PROGRESS{
+			color: #ff225f;
+			animation: blink 1.5s infinite;
+		}
+		.Area_center{
+			margin: 0 auto;
+			max-width: 1200px;
+			/*padding: 20px;*/
+		}
+		.Link{
+			color: #999;
+			font-size: 12px;
+			/* line-height: 23px; */
+			text-decoration: none;
+			cursor: pointer;
+		}
+		.Help_area{
+			display: block;
+			color: #5d5d5d;
+			padding: 10px 0;
+			/* font-size: 16px; */
+			font-style: italic;
+			line-height: 22px;
+		}
+		.HELP{
+			background-color: rgb(237, 237, 237);
+			width: 25px;
+			height: 25px;
+			display: inline-block;
+			border-radius: 50%;
+			line-height: 22px;
+			cursor: pointer;
+			color: rgba(128, 128, 128, 0.62);
+		}
+		.HELP.ACT{
+			background-color: rgba(97, 97, 97, 0.24);
+			color: #fff;
+		}
+		.Logo{
+			padding: 15px 0 15px 0;
+			font-size: 42px;
+			letter-spacing: 4px;
+		}
+		.Logo_desc{
+			font-size: 12px;
+			color: rgba(0, 0, 0, 0.6);
+			font-style: italic;
+			/*margin-top: 5px;*/
+			letter-spacing: 2px;
+		}
+		.Header_area{
+			background-color: #fff;
+			box-shadow: 0 2px 3px rgba(0,0,0,.1);
+		}
+		.Menu{
+			text-align: center;
+		}
+		.Menu .el{
+			display: inline-block;
+			padding: 15px 0;
+			font-size: 17px;
+			color: rgba(0, 0, 0, 0.69);
+			width: 150px;
+		}
+		.Menu a.el{
+			text-decoration: none;
+		}
+
+		.Title_header{
+			display: inline-block;
+			position: relative;
+			padding: 0 15px;
+			letter-spacing: 4px;
+			color: rgba(0, 0, 0, 0.65);
+			font-size: 26px;
+			font-weight: normal;
+			text-transform: uppercase;
+		}
+		.Title_header:before, .Title_header:after {
+			content: '';
+			display: block;
+			top: 50%;
+			width: 500px;
+			position: absolute;
+			border-bottom: 1px solid #ccc;
+		}
+		.Title_header:before {
+			left: 100%;
+		}
+		.Title_header:after {
+			right: 100%;
+		}
+		.Desc_area{
+			display: block;
+			color: #5d5d5d;
+			/* font-size: 16px; */
+			font-style: italic;
+			line-height: 22px;
+		}
+		.Footer{
+			margin-top: 40px;
+			/*height: 20px;*/
+			background-color: #fff;
+			padding-bottom: 60px;
+			padding-top: 5px;
+			box-shadow: 0 -1px 3px rgba(0,0,0,.1);
+		}
+		.Phone{
+			font-size: 20px;
+			color: #333;
+			text-decoration: none;
+			/*margin-bottom: 10px;*/
+			display: inline-block;
+			vertical-align: top;
+			margin-top: 10px;
+			line-height: 24px;
+		}
+		.Contacts_el{
+			vertical-align: top;
+			display: inline-block;
+			/* margin: 0 40px; */
+			width: 40%;
+		}
+
+		.Contacts_el .title{
+			color: #444;
+			margin-bottom: 12px;
+		}
+		.Avatar{
+			height: 120px;
+			width: 120px;
+			background-color: #e1e1e1;
+			border-radius: 50%;
+			margin: 0 auto;
+			overflow: hidden;
+		}
+		.Area .pic img{
+			width: 65px;
+		}
+		.Title_header_sub{
+			font-size: 14px;
+			color: #666;
+			display: block;
+		}
+		.In_one{
+			display: table-cell;
+		}
+		.In_one_table{
+			display: table;
+			width: 100%;
+		}
+		.Title_rus{
+			color: rgba(0, 0, 0, 0.37);
+			/*font-size: 14px;*/
+		}
+		@media (max-width: 980px) {
+			.Contacts_el{
+
+				width: 100%;
+				padding-bottom: 25px;
+			}
+			.In_one{
+				display: block;
+			}
+			.In_one_table{
+				display: block;
+			}
+
+		}
+		.But{
+			display: inline-block;
+			font-size: 20px;
+			color: #fff;
+			border-radius: 4px;
+			/* border: 2px solid #999; */
+			padding: 12px 16px;
+			margin: 20px;
+			background-color: #03A9F4;
+			cursor: pointer;
+		}
+		.ER{
+			color: #f5470f!important;
+		}
+		.Products_table{
+			width: 100%;
+		}
+		.Products_table .title{
+			background-color: #03A9F4;
+			color: #fff;
+
+		}
+		.Products_table td{
+			padding: 10px;
+		}
+		.Table_stripe tr:nth-child(2n) {
+			background: #f6f6f6;
+
+		}
+		a.Pic_show{
+			text-decoration: none;
+			color: #666;
+		}
+		.Products_table .body{
+			text-transform: uppercase;
+		}
+		.Text_shape{
+			text-transform: capitalize;
+			min-width: 120px;
+		}
+		.Pic_amount{
+			display: inline-block;
+			vertical-align: top;
+			color: #999;
+		}
+		.It_pic{
+    			vertical-align: middle;
+    			width: 65px;
+		}
+
+		/*
+		.Table_stripe tr:nth-child(1) {
+			background: #fff!important;
+		}*/
+	</style>
+</head>
+<body class="Main_area">
+
+<div class="Header_area">
+	<div class="Logo">
+		<img style="" src="img/logo.png">
+		<div class="Logo_desc">ломбард крупных бриллиантов на цветном 26</div>
+	</div>
+	<!--<div class="Menu">
+		<a href="#calc" class="el">КАЛЬКУЛЯТОР</a>
+		<a href="#contacts" class="el">КОНТАКТЫ</a>
+	</div>-->
+</div>
+
+
+<div class="Area_center">
+	<div class="Title_main" style="">
+		<h1 class="Title_header">Скупка. Продажа. Залог. Комиссия.</h1>
+	</div>
+	<div class="Desc_area" style="margin-bottom: 35px;font-size: 18px;">
+		От 1 карата бриллианты. До $1 млн в день обращения. От 5% в месяц.
+	</div>
+
+
+	<!--<div id="calc" class="Title_main" style="">
+		<span class="Title_header">КАЛЬКУЛЯТОР ЦЕНЫ</span>
+		<a href="m.php" class="Title_header_sub">Мобильная версия калькулятора</a>
+	</div>-->
+	<!--<div class="Desc_area">
+		Тут тоже должен быть классный текст про калькулятор и для чего он нужен
+	</div>-->
+	<div data-name="" class="PAY_TYPE Area">
+		<div id="sell" data-id="sell" data-discount="" class="el ACT">ПРОДАТЬ</div>
+		<div id="establish" data-id="establish" data-discount="" class="el">ЗАЛОЖИТЬ</div>
+	</div>
+
+	<div class="Title SS S_SHAPE">SHAPE <span class="Title_rus">(Форма)</span> <span data-target="shape_help" class="HELP H1">?</span></div>
+	<div id="shape_help" class="Help_area" style="display: none;">
+		Круглый бриллиант считается самой желанной и самой ценной формой огранки бриллианта. Бриллианты других форм огранки - также прекрасны, и кроме того, доступнее по цене - их стоимость ниже почти на 20% по сравнению с круглым.
+	</div>
+	<div class="SHAPE Area" data-per="">
+
+		<div data-id="round" data-discount=""  class="el"><div class="pic"><img src="img/s_round.png"></div>Round</div>
+		<!--<div data-id="pear" data-discount=""  class="el"><div class="pic"><img src="img/s_pear.png"></div>Pear</div>-->
+
+
+<!--
+		<div data-id="1" data-discount=""  class="el"><div class="pic"><img src="img/s_round.png"></div>Round</div>
+		<div data-id="2" data-discount=""  class="el"><div class="pic"><img src="img/s_pear.png"></div>Pear</div>
+		<div data-id="3" data-discount=""  class="el"><div class="pic"><img src="img/s_princess.png"></div>Princess</div>
+		<div data-id="4" data-discount=""  class="el"><div class="pic"><img src="img/s_marquise.png"></div>Marquise</div>
+		<div data-id="5" data-discount=""  class="el"><div class="pic"><img src="img/s_emerald.png"></div>Sq. Emerald</div>
+		<div data-id="7" data-discount=""  class="el"><div class="pic"><img src="img/s_oval.png"></div>Oval</div>
+		<div data-id="8" data-discount=""  class="el"><div class="pic"><img src="img/s_radiant.png"></div>Radiant</div>
+-->
+
+		<!--<div data-id="9" class="el">Emerald</div>-->
+
+<!--
+		<div data-id="10" data-discount="" class="el"><div class="pic"><img src="img/s_trilliant.png"></div>Trilliant</div>
+		<div data-id="11" data-discount="" class="el"><div class="pic"><img src="img/s_heart.png"></div>Heart</div>
+-->
+		<!--<div data-id="12" class="el">European Cut</div>
+
+		<div data-id="13" data-discount="" class="el">Old Miner</div>
+		<div data-id="14" data-discount="" class="el">Flanders</div>-->
+	<!--	
+<div data-id="15" data-discount="" class="el"><div class="pic"><img src="img/s_cushion.png"></div>Cushion</div>
+-->
+
+		<!--<div data-id="16" class="el">Cushion Modified</div>-->
+<!--
+		<div data-id="17" data-discount="" class="el"><div class="pic"><img src="img/s_asscher.png"></div>Asscher</div>
+-->
+
+		<!--<div data-id="18" class="el">Baguette</div>
+		<div data-id="19" class="el">Kite</div>
+		<div data-id="20" class="el">Star</div>
+		<div data-id="21" class="el">Other</div>
+		<div data-id="22" class="el">Half Moon</div>
+		<div data-id="23" class="el">Trapezoid</div>
+		<div data-id="24" class="el">Bullets</div>
+		<div data-id="25" class="el">Hexagonal</div>
+		<div data-id="26" class="el">Lozenge</div>
+		<div data-id="27" class="el">Pentagonal</div>
+		<div data-id="28" class="el">Rose</div>
+		<div data-id="29" class="el">Shield</div>
+		<div data-id="30" class="el">Square</div>
+		<div data-id="31" class="el">Triangular</div>
+		<div data-id="32" class="el">Briolette</div>
+		<div data-id="33" class="el">Octagonal</div>
+		<div data-id="34" class="el">Tapered Baguette</div>
+		<div data-id="35" class="el">Square Radiant </div>
+		<div data-id="36" class="el">Calf</div>
+		<div data-id="37" class="el">Tapered Bullet</div>
+		<div data-id="38" class="el">Circular</div>-->
+
+	</div>
+
+	<div class="Title SS S_COLOR">COLOR <span class="Title_rus">(Цвет)</span> <span data-target="color_help" class="HELP H1">?</span></div>
+	<div id="color_help" class="Help_area" style="display: none;">
+		Не исключайте из своего выбора бриллианты невысоких цветов (G-H-J). В украшении, они выглядят неотличимо от бриллиантов высоких характеристик. А по стоимости - существенно дешевле. Это важно, если нужно экономить или произвести впечатление. Если ваша цель - сохранение и накопление, - выбирайте бриллианты высших характеристик цвета (D-E-F). Они значительно ликвиднее чем бриллианты средних характеристик
+	</div>
+	<div class="COLOR Area" data-per="">
+		<div data-id="D" data-discount="" class="el">D</div>
+		<div data-id="E" data-discount="" class="el">E</div>
+		<div data-id="F" data-discount="" class="el">F</div>
+		<div data-id="G" data-discount="" class="el">G</div>
+		<div data-id="H" data-discount="" class="el">H</div>
+		<div data-id="I" data-discount="" class="el">I</div>
+		<div data-id="J" data-discount="" class="el">J</div>
+		<div data-id="K" data-discount="" class="el">K</div>
+		<div data-id="L" data-discount="" class="el">L</div>
+		<div data-id="M" data-discount="" class="el">M</div>
+	</div>
+
+
+	<div  class="Title SS S_CLARITY">clarity <span class="Title_rus">(Чистота)</span><span data-target="clarity_help" class="HELP H1">?</span></div>
+	<div id="clarity_help" class="Help_area" style="display: none;">
+		Для ежедневного использования украшения, достаточно чистоты (VS1, VS2, SI1). Такой бриллиант будет невозможно отличить от Идеального без специальных навыков и приборов. Бриллиант выглядит также потрясающе, а цена очень привлекательна. Конечно, если вы приобретаете бриллианты в инвестиционных целях - то высшие чистоты (VVS2-VVS1-IF) добавят вашему бриллианту ликвидности.
+	</div>
+	<div data-name="" class="CLARITY Area" data-per="">
+		<div data-id="IF" data-discount="" class="el">IF</div>
+		<div data-id="VVS1" data-discount="" class="el">VVS1</div>
+		<div data-id="VVS2" data-discount="" class="el">VVS2</div>
+		<div data-id="VS1" data-discount="" class="el">VS1</div>
+		<div data-id="VS2" data-discount="" class="el">VS2</div>
+		<div data-id="SI1" data-discount="" class="el">SI1</div>
+		<div data-id="SI2" data-discount="" class="el">SI2</div>
+		<div data-id="SI3" data-discount="" class="el">SI3</div>
+		<div data-id="I1" data-discount="" class="el">I1</div>
+		<div data-id="I2" data-discount="" class="el">I2</div>
+		<div data-id="I3" data-discount="" class="el">I3</div>
+	</div>
+
+
+	<div class="In_one_table">
+	<div class="In_one">
+	<div  class="Title SS S_CUT">CUT <span class="Title_rus">(Огранка)</span> <span data-target="cut_help" class="HELP H1">?</span></div>
+	<div data-name="" class="CUT Area" data-per="">
+		<div data-id="10" data-discount="" class="el">Good</div>
+		<div data-id="5" data-discount="" class="el">Very Good</div>
+		<div data-id="0" data-discount="" class="el">Excellent</div>
+	</div>
+	</div>
+
+	<div class="In_one">
+	<div class="Title SS S_SYMMETRY">SYMMETRY <span class="Title_rus">(Симметрия)</span> <span data-target="s_p_help" class="HELP H1">?</span></div>
+	<div data-name="" class="SYMMETRY Area" data-per="">
+		<div data-id="10" data-discount="" class="el">Good</div>
+		<div data-id="5" data-discount="" class="el">Very Good</div>
+		<div data-id="0" data-discount="" class="el">Excellent</div>
+	</div>
+	</div>
+	<div class="In_one">
+	<div class="Title SS S_POLISH">POLISH <span class="Title_rus">(Полировка)</span> <span data-target="s_p_help" class="HELP H1">?</span></div>
+	<div data-name="" class="POLISH Area" data-per="">
+		<div data-id="3" data-discount="" class="el">Good</div>
+		<div data-id="2" data-discount="" class="el">Very Good</div>
+		<div data-id="0" data-discount="" class="el">Excellent</div>
+	</div>
+	</div>
+	</div>
+
+	<div id="cut_help" class="Help_area" style="display: none;">
+		Excellent - может увеличить стоимость бриллианта на 7-20%. Бриллиант с превосходной огранкой отличается идеальными пропорциями, которые позволяют бриллианту выглядеть больше чем он есть на самом деле, сиять интенсивнее и ярче. "Good" , наоборот, понижает стоимость бриллианта на 7-20%. Бриллиант с огранкой  "Good" всегда выглядит тусклым и менее впечатляющим по сравнению с остальными.
+	</div>
+	<div id="s_p_help" class="Help_area" style="display: none;">
+		Полировка и симметрия это два наиважнейших аспекта огранки бриллиантов. Полировка важна для гладкости граней бриллианта, а симметрия важна для выравнивания граней. Плохая полировка создает нехорошую поверхность для отражения света, и как следствие драгоценный камень не будет искриться. На поверхности не должно быть щербин и царапин, как бы банально это не казалось относительно бриллианта. Идеальная симметрия, выверенная с математической точностью, очень важна, так как луч света должен попадать в драгоценный камень и выходить из него правильно, а не вниз, или в какую-то одну дальнюю точку.
+	</div>
+
+
+	<div class="Title SS S_FLUORESCENCE">FLUORESCENCE <span class="Title_rus">(Флуоресценция)</span> <span data-target="help_fluorescence" class="HELP H1">?</span></div>
+	<div id="help_fluorescence" class="Help_area" style="display: none;">
+		Флюоресценция бриллианта - это эффект, которым обладают почти все бриллианты. Чаще всего, он проявляется в темноте, в виде мистического голубоватого свечения бриллианта, если бриллиант попадает в поле работы люминесцентных ламп. Заметить этот эффект можно, например, в дискотеке. Ввиду того, что бриллианты без флюоресценции встречаются крайне редко - их стоимость выше. Допуская наличие флюоресценции у вашего бриллианта - вам не придется переплачивать.
+	</div>
+	<div data-name="" class="FLUORESCENCE Area" data-per="">
+		<div data-id="0" data-discount="" class="el">None</div>
+		<div data-id="3" data-discount="" class="el">Faint</div>
+		<div data-id="6" data-discount="" class="el">Medium</div>
+		<div data-id="10" data-discount="" class="el">Strong</div>
+		<div data-id="15" data-discount="" class="el">Very strong</div>
+	</div>
+
+	<div class="Title SS S_CERTIFICATE">CERTIFICATE <span class="Title_rus">(Сертификат)</span> <span data-target="cert_help" class="H1 Link"> Как получить сертификат? </span> <!--<a class="Link" href="#">( Как получить сертификат? )</a>--></div>
+	<div id="cert_help" class="Help_area" style="display: none;">
+		Документы, выдаваемые независимыми геммологическими лабораториями, являются геммологическими экспертными заключениями или сертификатами. На территории РФ наиболее признанными являются: Смоленский геммологический центр SGC, геммологический центр МГУ, лаборатория GIC, лаборатория Пробирной палаты. Существуют признанные международные геммологические лаборатории, сертификаты которых котируются во всем мире. ( GIA, EGL, HRD, IGI и так далее) Если вы приобретаете крупный бриллиант в инвестиционных целях, желательно иметь и российский и международный сертификат.
+		<br><br>
+		Если у вас нет сертификата, не расстраиваетесь! В Москве действует цент сертификации драгоценных камней. <a href="http://www.gemexpert.ru/" target="_blank">gemexpert.ru</a>
+	</div>
+	<div data-name="" class="CERTIFICATE Area">
+		<div data-id="5" data-discount="" class="el">GIA</div>
+		<div data-id="0" data-discount="" class="el">МГУ</div>
+		<div data-id="0" data-discount="" class="el">Другие</div>
+		<div data-id="-10" data-discount="" class="el">Нет</div>
+	</div>
+
+	<div class="Title">carat <span class="Title_rus">(Карат)</span><span data-target="carat_help" class="HELP H1">?</span></div>
+	<div id="carat_help" class="Help_area" style="display: none;">
+		Для точного впечатления о величине бриллианта, ориентируйтесь на стандарты размеров для круглой огранки КР-57: 0.25 карат - 4.2 мм., 0.35 карат - 4.5 мм., 0.50 карат - 5.0 мм., 0.75 карат - 6.0 мм., 0.90 карат - 6.3 мм., 1.00 карат - 6.6 мм.
+	</div>
+	<div class="CARAT Area">
+		<input id="CARAT_VAL" data-discount3="" data-discount5=""   class="Input_basic" type="number" name="carat" min="1" value="1" size="10" maxlength="9" style="max-width: 200px;text-align: center;">
+	</div>
+	<div class="But">РАСЧИТАТЬ ЦЕНУ</div>
+	<div class="ERROR"></div>
+	<div class="Total">
+		<div class="Price_el">
+			<div class="PRICE P_RAP_TOTAL"></div>
+		</div>
+	</div>
+
+
+
+</div>
+<div class="Footer">
+<div class="Area_center" style="overflow:auto;">
+	</div>
+
+
+<div style="margin-top: 40px;font-size: 20px;">
+	<div>При покупки бриллианта, кольцо от наших друзей бесплатно!</div>
+
+		<img style="width: 70px;" src="img/ringstudio.png">
+
+
+		<img style="width: 130px;" src="img/gem-logo.gif">
+
+</div>
+
+
+
+	<div id="contacts" class="Title_main" style=""><span class="Title_header">КОНТАКТЫ</span></div>
+	<div><a href="tel:8 (980) 333-00-00" class="Phone"> +7 (980) 333-00-00</a>
+		<a href="viber://add?number=+7 980 333-00-00"><img style="width: 30px;" src="img/l_w.png"></a>
+		<a href="whatsapp://call?abid=+79803330000"><img style="width: 36px;" src="img/l_v.png"></a>
+	</div>
+	<div class="Phone">Цветной бульвар 26, Москва</div>
+	<div class="Desc_area">Бесплатная парковка по предварительной записи.</div>
+
+</div>
+<script>
+	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	function Calculate_total_price(rap_price) {
+	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+		console.log("rap_price",rap_price);
+
+
+		// 1 - 50% from rapaport
+
+		rap_price = (rap_price*50)/100;
+
+		var total = rap_price;
+
+	
+		console.log("rap_price - 50 % ",rap_price);
+
+
+
+
+		//	SELL TYPE
+		var pay_sell = 0;
+		var pay_sell_d = $("#sell").attr("data-discount");
+		if(pay_sell_d) pay_sell = (rap_price*pay_sell_d)/100;
+
+		var pay_establish = 0;
+		var pay_establish_d = $("#establish").attr("data-discount");
+		if(pay_establish_d) pay_establish = (rap_price*pay_establish_d)/100;
+
+
+		//	Pay type
+		var pay_type = $(".PAY_TYPE .ACT.el").attr("data-id");
+		if(pay_type=="sell") total = total - pay_sell;
+		else total = total - pay_establish;
+
+
+
+		console.log("-Pay type",total);
+
+
+
+
+
+
+		// SHAPE
+		var shape = $(".SHAPE .ACT.el").attr("data-discount");
+		if(shape) total = total - ((rap_price*shape)/100);
+		console.log("-Shape",shape,total );
+
+		// COLOR
+		var color = $(".COLOR .ACT.el").attr("data-discount");
+		if(color) total = total - ((rap_price*color)/100);
+		console.log("-Color",color,total );
+
+		// CLARITY 
+		var clarity = $(".CLARITY .ACT.el").attr("data-discount");
+		if(color) total = total - ((rap_price*clarity)/100);
+		console.log("-clarity",clarity,total );
+
+		// FLUORESCENCE
+		var fluorescence = $(".FLUORESCENCE .ACT.el").attr("data-discount");
+		if(fluorescence) total = total - ((rap_price*fluorescence)/100);
+		console.log("-Fluorescence",fluorescence,total );
+
+		// CUT
+		var cut = $(".CUT .ACT.el").attr("data-discount");
+		if(cut) total = total - ((rap_price*cut)/100);
+		console.log("-Cut",cut,total );
+
+		// SYMMETRY
+		var symmetry = $(".SYMMETRY .ACT.el").attr("data-discount");
+		if(symmetry) total = total - ((rap_price*symmetry)/100);
+		console.log("-Symmetry",symmetry,total );
+
+		// POLISH
+		var polish = $(".POLISH .ACT.el").attr("data-discount");
+		if(polish) total = total - ((rap_price*polish)/100);
+		console.log("-Polish",polish,total );
+
+		// CERTIFICATE
+		var certificate_percent = Number($(".CERTIFICATE .ACT.el").attr("data-discount"));
+		if(certificate_percent) total = total - ((rap_price*certificate_percent)/100);
+		console.log("-Cert",certificate_percent,total );
+
+
+		// CARAT if size =>3 add discount
+		var carat = Number($("#CARAT_VAL").val());
+		var carat_discount3 = $("#CARAT_VAL").attr("data-discount3");
+		var carat_discount5 = $("#CARAT_VAL").attr("data-discount5");
+		
+		if(carat>=5) {
+			total=total - ((total*carat_discount5)/100);
+		} else {
+			if(carat>=3) total=total - ((rap_price*carat_discount3)/100);
+		}
+
+		console.log("-Carat size discont",total );
+
+
+		// SHAPE NOT ROUND
+		//var shape = $(".SHAPE .ACT.el").attr("data-id");
+		//var shape_discount = $("#CARAT_VAL").attr("data-discount_shape");
+		//if(shape!=1) total=total - ((rap_price*shape_discount)/100);
+
+
+		return Math.round(total);
+	}
+	// ------------------------------------
+
+	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	function Reset_error() {
+	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		$(".ERROR").html("");
+	}
+
+
+	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	function Calculate_price(calc) {
+	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		$(".ERROR").html("");
+		if(calc!=1) return;
+
+		//	Reset error
+		$(".PRICE").html("");$(".PRICE1").html("");$(".But").removeClass("PROGRESS");
+
+		//	Get info about diamond
+		var clarity = $(".CLARITY .ACT.el").attr("data-id");
+		var color = $(".COLOR .ACT.el").attr("data-id");
+		var shape = $(".SHAPE .ACT.el").attr("data-id");
+		var carat = Number($("#CARAT_VAL").val());
+
+		var fluorescence = $(".FLUORESCENCE .ACT.el").attr("data-id");
+		var cut = $(".CUT .ACT.el").attr("data-id");
+		var symmetry = $(".SYMMETRY .ACT.el").attr("data-id");
+		var polish = $(".POLISH .ACT.el").attr("data-id");
+		var certificate = $(".CERTIFICATE .ACT.el").attr("data-id");
+
+
+
+		if(!clarity) $(".S_CLARITY").addClass("ER");
+		if(!color) $(".S_COLOR").addClass("ER");
+		if(!shape) $(".S_SHAPE").addClass("ER");
+		if(!fluorescence) $(".S_FLUORESCENCE").addClass("ER");
+		if(!cut) $(".S_CUT").addClass("ER");
+		if(!symmetry) $(".S_SYMMETRY").addClass("ER");
+		if(!polish) $(".S_POLISH").addClass("ER");
+		if(!certificate) $(".S_CERTIFICATE").addClass("ER");
+
+		if(!clarity || !color || !shape || !carat || carat==0 || !fluorescence || !cut || !symmetry || !polish || !certificate) {
+			$(".ERROR").html("Выберите все пункты.");
+			return;
+		}
+
+
+
+		//	LIMIT >0.1
+		if(carat<0.1) {
+			$(".ERROR").html("Размер должен быть больше 0.1");return;
+		}
+
+		var diamond = {"shape":shape,"color":color,"clarity":clarity,"size":carat};
+
+		console.log(diamond);
+		$(".But").addClass("PROGRESS");
+
+		//	SEND
+		$.ajax({url: "calculator_rapaport_new.php", type: "POST", dataType: "json", data:{"diamond":diamond},
+			success: function(e){
+				$(".But").removeClass("PROGRESS");
+				if(!e){ $(".ERROR").html("Нет данных");return;}
+				if(e['error']){$(".ERROR").html(e['error']);return;}
+
+				//	Set
+				if(e['rap_total']) $(".P_RAP_TOTAL").html(Calculate_total_price(e['rap_total']));
+
+				console.log(e);
+			}
+		});
+	}
+	// ------------------------------------
+
+	$(".Total,.But").click(function () {
+		Calculate_price(1);
+	});
+
+
+	$(".PAY_TYPE .el").click(function () {
+		$(".PAY_TYPE .el").removeClass("ACT");
+		$(this).addClass("ACT");
+		Calculate_price();
+	});
+	$(".CLARITY .el").click(function () {
+		$(".CLARITY .el").removeClass("ACT");
+		$(this).addClass("ACT");
+		Calculate_price();
+		$(".S_CLARITY").removeClass("ER");
+	});
+	$(".COLOR .el").click(function () {
+		$(".COLOR .el").removeClass("ACT");
+		$(this).addClass("ACT");
+		Calculate_price();
+		$(".S_COLOR").removeClass("ER");
+	});
+	$(".SHAPE  .el").click(function () {
+		$(".SHAPE  .el").removeClass("ACT");
+		$(this).addClass("ACT");
+		Calculate_price();
+		$(".S_SHAPE").removeClass("ER");
+	});
+
+	$( "#CARAT_VAL" ).blur(function() {
+		//console.log("222");
+		Calculate_price();
+	});
+
+	$(".FLUORESCENCE .el").click(function () {
+		$(".FLUORESCENCE .el").removeClass("ACT");
+		$(this).addClass("ACT");
+		Calculate_price();
+		$(".S_FLUORESCENCE").removeClass("ER");
+	});
+
+	$(".CERTIFICATE .el").click(function () {
+		$(".CERTIFICATE .el").removeClass("ACT");
+		$(this).addClass("ACT");
+		Calculate_price();
+		$(".S_CERTIFICATE").removeClass("ER");
+	});
+
+
+	$(".CUT .el").click(function () {
+		$(".CUT .el").removeClass("ACT");
+		$(this).addClass("ACT");
+		Calculate_price();
+		$(".S_CUT").removeClass("ER");
+	});
+	$(".SYMMETRY .el").click(function () {
+		$(".SYMMETRY .el").removeClass("ACT");
+		$(this).addClass("ACT");
+		Calculate_price();
+		$(".S_SYMMETRY").removeClass("ER");
+	});
+	$(".POLISH .el").click(function () {
+		$(".POLISH .el").removeClass("ACT");
+		$(this).addClass("ACT");
+		Calculate_price();
+		$(".S_POLISH").removeClass("ER");
+	});
+
+	$(".H1").click(function () {
+
+		var target_id = $(this).attr("data-target");
+		if(!target_id) return;
+
+		if($(this).hasClass("ACT")){
+			$(this).removeClass("ACT");
+			$("#"+target_id).hide();
+		} else {
+			$(this).addClass("ACT");
+			$("#"+target_id).show();
+		}
+
+	});
+</script>
+<!-- Yandex.Metrika counter --> <script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter42519669 = new Ya.Metrika({ id:42519669, clickmap:true, trackLinks:true, accurateTrackBounce:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/42519669" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
+</body>
+</html>
